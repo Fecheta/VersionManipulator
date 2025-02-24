@@ -4,22 +4,22 @@
     {
         public static Entities.Version ParseVersion(this string version)
         {
-            if (version == null) { throw new Exception("The file has no content"); };
+            if (string.IsNullOrWhiteSpace(version)) { throw new ArgumentException("The file has no content"); };
 
             var ver = version.Split(".");
 
-            if (ver.Length != 4) { throw new Exception("The version does not match the standard"); }
+            if (ver.Length != 4) { throw new FormatException("The version does not match the standard"); }
 
             var parsedVersion = new Entities.Version();
 
             try
             {
-                parsedVersion.Major = byte.Parse(ver[0]);
-                parsedVersion.Minor = byte.Parse(ver[1]);
-                parsedVersion.Build = byte.Parse(ver[2]);
-                parsedVersion.Revision = byte.Parse(ver[3]);
+                parsedVersion.Major = int.Parse(ver[0]);
+                parsedVersion.Minor = int.Parse(ver[1]);
+                parsedVersion.Build = int.Parse(ver[2]);
+                parsedVersion.Revision = int.Parse(ver[3]);
             }
-            catch (ArgumentNullException)
+            catch (Exception)
             {
                 throw;
             }

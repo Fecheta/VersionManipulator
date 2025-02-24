@@ -2,9 +2,9 @@
 {
     public class Version
     {
-        public byte Major { get; set; }
-        public byte Minor { get; set; }
-        public byte Build { get; set; }
-        public byte Revision { get; set; }
+        public int Major { get; set; }
+        public int Minor { get; set; }
+        public int Build { get; set; }
+        public int Revision { get; set; }
     }
 }
